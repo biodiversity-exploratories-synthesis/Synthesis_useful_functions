@@ -1,3 +1,7 @@
+# Note : the function depends on the package data.table, if not available, install it with
+#     install.packages("data.table")
+#     all other explanation is given in the documentation below.
+
 #' Add back missing plots x species combinations
 #' 
 #' date of creation : 26.01.21
