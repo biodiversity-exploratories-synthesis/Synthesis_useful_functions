@@ -10,6 +10,7 @@ Next action/ vision: this folder will be converted to an R package containing us
 - `BEplotNonZeros`
 - `BEaddRegion`
 - `BEaddHabitat`
+- `head2D`
 
 ### add_back_missing_plots_species_combinations
 R function to use together with the synthesis diversity dataset. Some plots x species combinations with 0 species were removed from Bacteria and soilfungi in order to save memory. Adding back the missing combinations sometimes requires adding a plot which is completely missing from the dataset, which is exactly what this function does. Find further information about the "missing zeros" in the [synthesis dataset manual](https://github.com/biodiversity-exploratories-synthesis/Synthesis-dataset-manual/blob/main/Synthesis%20datasets%20%20How%20to%20use.md).
@@ -62,3 +63,16 @@ Example:
 dat <- data.frame(Plot_name = c("AEG01", "AEG02", "HEW04", "SEG8", "SEW10"), Values=1:5)
 dat <- BEaddHabitat(dat, "Plot_name", habitatname = "Habitat")
 ```
+
+### head2D
+This function prints the first 10 lines and 10 columns of a data.frame into the console. It is an expanded version of the `head()` function. The `head()` function prints out the first 10 lines of a data.frame, but is not handy for data.frames with many columns, as the output gets messy.
+
+Example : 
+```{r}
+# create a data.frame with many rows and many columns
+dat <- cbind(data.frame(Plot_name = paste(c("AEG", "HEG", "SEG"), seq(1, 50), sep= "")),
+data.frame(matrix(0, nrow = 150, ncol = 50, dimnames = list(NULL, paste("Species", seq(1, 50), sep = "_")))))
+head(dat) # messy output with head
+head2D(dat) # clear output, only first 10 rows and columns
+```
+
